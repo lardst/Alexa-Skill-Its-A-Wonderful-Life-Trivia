@@ -1,0 +1,41 @@
+{
+  "skillManifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "It's A Wonderful Life movie trivia.",
+          "examplePhrases": [
+            "Alexa open It's A Wonderful Life Trivia dev",
+            "Alexa tell It's A Wonderful Life Trivia to start a game",
+            "Alexa tell It's A Wonderful Life Trivia I want to play"
+          ],
+          "name": "It's A Wonderful Life Trivia Development",
+          "smallIconUri": "",
+          "description": "This skill will test your knowledge of the Christmas classic It's A Wonderful Life.",
+          "largeIconUri": ""
+        }
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": [
+        "US"
+      ]
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}

@@ -1,0 +1,477 @@
+{
+	"interactionModel": {
+		"languageModel": {
+			"intents": [{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NoIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.RepeatIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StartOverIntent",
+					"samples": [
+						"let's do that again",
+						"new game",
+						"play again",
+						"start",
+						"start a new game",
+						"start game",
+						"start new game"
+					]
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.YesIntent",
+					"samples": []
+				},
+				{
+					"name": "Unhandled",
+					"samples": []
+				},
+				{
+					"name": "ChangeNumberOfQuestionsIntent",
+					"samples": [
+						"change the number of questions",
+						"i want to change the number of questions",
+						"change the number of questions to {Number}",
+						"i want to change the number of questions to {Number}"
+					],
+					"slots": [{
+						"name": "Number",
+						"type": "CardinalAndOrdinalNumbers"
+					}]
+				},
+				{
+					"name": "AnswerIntent",
+					"samples": [
+						"i like the {Number} one",
+						"i'll say the {Number} one",
+						"is it {Number}",
+						"my Number is {Number}",
+						"the Number is {Number}",
+						"the {Number} Number",
+						"the {Number} one",
+						"what is the {Number}",
+						"what is the {Number} one",
+						"what is {Number}",
+						"{Number}",
+						"{Number} is my Number"
+					],
+					"slots": [{
+						"name": "Number",
+						"type": "CardinalAndOrdinalNumbers"
+					}]
+				},
+				{
+					"name": "NumberOfQuestionsIntent",
+					"samples": [
+						"i would like {Number}",
+						"i would like {Number} questions",
+						"{Number}",
+						"{Number} questions",
+						"i would like {Number} please",
+						"i would like {Number} questions please",
+						"{Number} please",
+						"{Number} questions please"
+					],
+					"slots": [{
+						"name": "Number",
+						"type": "CardinalAndOrdinalNumbers"
+					}]
+				},
+				{
+					"name": "AnswerUnknownIntent",
+					"samples": [
+						"beats me",
+						"don't know",
+						"dunno",
+						"forget this",
+						"i don't know",
+						"i don't know that",
+						"i don't know that one",
+						"i don't know the answer",
+						"i don't know this answer",
+						"i don't know this question",
+						"nope don't know",
+						"skip",
+						"who knows"
+					],
+					"slots": []
+				},
+				{
+					"name": "SessionEndedRequest",
+					"samples": [],
+					"slots": []
+				}
+			],
+			"invocationName": "it's a wonderful life trivia dev",
+			"types": [{
+				"name": "CardinalAndOrdinalNumbers",
+				"values": [{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "first"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "second"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "third"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "fourth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "fifth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "sixth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "seventh"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "eighth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "ninth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "tenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Eleventh"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twelfth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Thirteenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Fourteenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Fifteenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Sixteenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Seventeenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Eighteenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Nineteenth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twentieth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty first"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty second"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty third"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty fourth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty fifth"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "one"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "two"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "three"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "four"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "five"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "six"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "seven"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "eight"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "nine"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "ten"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Eleven"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twelve"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Thirteen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Fourteen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Fifteen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Sixteen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Seventeen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Eighteen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Nineteen"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty one"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty two"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty three"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty four"
+						}
+					},
+					{
+						"id": null,
+						"name": {
+							"synonyms": [],
+							"value": "Twenty five"
+						}
+					}
+				]
+			}]
+		}
+	}
+}
