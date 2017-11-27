@@ -5,16 +5,20 @@ var Questions = require('../content/questions'),
             var playerAnswer = -1,
                 isPlayerAnswerCorrect = false,
                 choiceCount = trivia.getAttribute.call(this, 'choiceCount'),
+                correctAnswersCount = trivia.getAttribute.call(this, 'correctAnswersCount'),
                 correctAnswerCopy = trivia.getAttribute.call(this, 'correctAnswerCopy'),
                 correctAnswerSlotNumber = trivia.getAttribute.call(this, 'correctAnswerSlotNumber'),
                 currentQuestionSlotNumber = trivia.getAttribute.call(this, 'currentQuestionSlotNumber'),
+                isRepeatQuestion = false;
                 numberOfQuestions = trivia.getAttribute.call(this, 'numberOfQuestions'),
-                prompt,
+                prompt = '',
                 questionIndex = trivia.getAttribute.call(this, 'questionIndex'),
                 questionCrux = trivia.getAttribute.call(this, 'questionCrux'),
+                questionObject = Questions[questionIndex];
                 score = trivia.getAttribute.call(this, 'score');
 
             Log.write("Is the answer not known? " + isAnswerUnknown.toString());
+
             if (!isAnswerUnknown) {
                 playerAnswer = parseInt(ordinalToNumber(trivia.getIntent.call(this, 'Number', -1)), 10);
             }
@@ -25,23 +29,18 @@ var Questions = require('../content/questions'),
 
                 if (isPlayerAnswerCorrect) {
                     score = trivia.calculateScore(score, questionCrux);
+                    ++correctAnswersCount;
                     prompt += Strings('game.answers.reply.correct.text').Format(
                         Strings('game.answers.reply.correct.influential').Randomize()
                     );
                     prompt += correctAnswerCopy;
-                } else if (isAnswerUnknown) {
-                    prompt = Strings('game.answers.reply.unknown.text').Concat(
-                        Strings('game.answers.reply.incorrect.reply').Format(
-                            correctAnswerSlotNumber,
-                            correctAnswerCopy
-                        )
-                    );
                 } else {
                     prompt += Strings('game.answers.reply.incorrect.text').Concat(
                         Strings('game.answers.reply.incorrect.reply').Format(
                             correctAnswerSlotNumber,
                             correctAnswerCopy
                         ),
+                        questionObject.choices[correctAnswerSlotNumber],
                         Strings('global.pause.short')
                     );
                 }
@@ -49,23 +48,31 @@ var Questions = require('../content/questions'),
                 prompt += Strings('global.pause.short');
 
                 trivia.setAttributes.call(this, {
+                    'correctAnswersCount': correctAnswersCount,
                     'isRepeat': false,
                     'playerAnswer': playerAnswer,
                     'score': score
                 });
-
-                if (currentQuestionSlotNumber < --numberOfQuestions) {
-                    trivia.ask.call(this, false, prompt);
-                } else {
-                    trivia.end.call(this, prompt);
-                }
+            } else if (isAnswerUnknown) {
+                prompt = Strings('game.answers.reply.unknown.text').Concat(
+                    Strings('game.answers.reply.incorrect.reply').Format(
+                        correctAnswerSlotNumber,
+                        correctAnswerCopy
+                    )
+                );
             } else {
-                prompt = Strings('game.answers.instructions').Format(choiceCount).Concat(
+                prompt = Strings('help.state.GAME_STATE.instructions').Format(choiceCount).Concat(
                     Strings('global.string.space'),
-                    Strings('game.repeat.instructions'),
+                    Strings('help.state.GAME_STATE.repeat.instructions'),
                     Strings('global.pause.short')
                 );
-                trivia.ask.call(this, true, prompt);
+                isRepeatQuestion = true;
+            }
+
+            if (currentQuestionSlotNumber < --numberOfQuestions) {
+                trivia.ask.call(this, isRepeatQuestion, prompt);
+            } else {
+                trivia.end.call(this, prompt);
             }
         },
         'ask': function (isRepeatQuestion, _prompt) {
@@ -113,9 +120,9 @@ var Questions = require('../content/questions'),
                 }
             );
 
-            reprompt = Strings('game.answers.instructions').Format(questionObject.length).Concat(
+            reprompt = Strings('help.state.GAME_STATE.instructions').Format(questionObject.length).Concat(
                 Strings('global.string.space'),
-                Strings('game.repeat.instructions')
+                Strings('help.state.GAME_STATE.repeat.instructions')
             )
 
             trivia.sendResponse.call(this, prompt, reprompt);
@@ -134,18 +141,27 @@ var Questions = require('../content/questions'),
         },
         'end': function (_prompt) {
             var score = trivia.getAttribute.call(this, 'score'),
+                correctAnswersCount = trivia.getAttribute.call(this, 'correctAnswersCount'),
                 numberOfQuestions = trivia.getAttribute.call(this, 'numberOfQuestions'),
-                percent = Math.round((score / numberOfQuestions) * 100),
+                percent = Math.round((correctAnswersCount / numberOfQuestions) * 100),
                 attaboyIndex = trivia.getAttaboyIndex(percent),
                 attaboy = Strings('game.answers.attaboy')[attaboyIndex],
-                prompt;
+                prompt,
+                useCrux = Settings.enableCruxBasedScoringOfQuestions;;
 
             prompt = _prompt || Strings('global.string.empty');
-            prompt += Strings('game.end.text').Format(
-                score,
-                numberOfQuestions,
-                attaboy
-            );
+            prompt += useCrux ?
+                Strings('game.end.crux').Format(
+                    correctAnswersCount,
+                    numberOfQuestions,
+                    score,
+                    attaboy
+                ) : 
+                Strings('game.end.text').Format(
+                    correctAnswersCount,
+                    numberOfQuestions,
+                    attaboy
+                );
             trivia.sendResponse.call(this, prompt);
         },
         'getAttaboyIndex': function (percent) {
@@ -172,14 +188,22 @@ var Questions = require('../content/questions'),
                     intent.slots[intentKey].value :
                     (defaultValue ? defaultValue : '');
 
-            Log.write('intent: ' + intent.slots[intentKey].value);
-
             return intentValue;
         },
         'help': function () {
+            var state = Empty(this.handler.state, true, 'default'),
+                numberOfQuestions,
+                helpCopyObject = Strings('help.state')[state],
+                prompt = helpCopyObject.getKeys('instructions', Strings('global.pause.short'));
 
+            if (state === Settings.handlerStates.game) {
+                numberOfQuestions = trivia.getAttribute.call(this, 'numberOfQuestions');
+                prompt = prompt.Format(numberOfQuestions);
+            }
+
+            trivia.sendResponse.call(this, prompt.Clean().Capitalize());
         },
-        'initialize': function (isNewGame, isStartOver) {
+        'initialize': function (isNewGame, isStartOver, hasPlayerOptions = false) {
             var prompt,
                 reprompt,
                 numberOfQuestions = trivia.getAttribute.call(this, 'numberOfQuestions', 0),
@@ -193,12 +217,37 @@ var Questions = require('../content/questions'),
                 "startOver": isStartOver
             });
 
-            reprompt = Strings('launch.beforeWeCanBegin').Format(Settings.gameLengthOptions.JoinWith(', ', 'or ')).Clean();
+            reprompt = Strings('launch.beforeWeCanBegin').Format(
+                Strings('help.state.SETUP_STATE.instructions').Format(
+                    Settings.gameLengthOptions.JoinWith(', ', 'or ')
+                )
+            );
 
-            if (isNewGame && !isStartOver) {
+            this.response.card({
+                type: "Standard",
+                title: "Strings('global.game.name')", // this is not required for type Simple or Standard
+                text: Strings('global.game.card.text'),
+                image: {
+                    smallImageUrl: Settings.smallImageUrl,
+                    largeImageUrl: Settings.largeImageUrl
+                }
+            });
+
+            if (hasPlayerOptions) {
+                numberOfQuestions = trivia.getIntent.call(this, 'Number', 7);
+                trivia.setAttributes.call(this, {'numberOfQuestions': numberOfQuestions});
+                prompt = Strings('launch.welcome').Format(
+                    Strings('global.game.name'),
+                    Strings('launch.iWillAsk').Format(numberOfQuestions.toString()),
+                    Strings('help.state.default.instructions'),
+                    ''
+                );
+                skipNumberOfQuestionsPrompt = true;
+            } else if (isNewGame && !isStartOver) {
                 prompt = Strings('launch.welcome').Format(
                     Strings('global.game.name'),
                     Strings('launch.iWillAsk').Format(''),
+                    Strings('help.state.default.instructions'),
                     reprompt
                 ).Clean();
             } else if (isNewGame && isStartOver) {
@@ -212,16 +261,22 @@ var Questions = require('../content/questions'),
             }
 
             if (skipNumberOfQuestionsPrompt) {
-                trivia.play.call(this);
+                trivia.play.call(this, prompt.Clean());
             } else {
-                trivia.sendResponse.call(this, prompt, reprompt);
+                trivia.sendResponse.call(this, prompt.Clean(), reprompt.Clean());
             }
             
         },
-        'play': function () {
+        'play': function (_prompt) {
             var numberOfQuestions = trivia.getAttribute.call(this, 'numberOfQuestions'),
                 selectedQuestionIndexes = trivia.randomizeQuestions(Questions.length, numberOfQuestions),
-                prompt = Strings('game.letsBegin');
+                prompt;
+
+            prompt = (_prompt ? _prompt : '').Concat(
+                ' ',
+                Strings('game.letsBegin'),
+                Strings('global.pause.short')
+            ).Clean();
 
             trivia.setAttributes.call(this, {
                 "selectedQuestionIndexes": selectedQuestionIndexes
@@ -260,12 +315,17 @@ var Questions = require('../content/questions'),
 
             trivia.ask.call(this, true, prompt.Clean());
         },
-        'sendResponse': function (prompt, reprompt) {
+        'sendResponse': function (prompt, reprompt, endSession) {
             this.response.speak(prompt);
             if (reprompt) {
                 this.response.listen(reprompt);
             }
-            this.emit(':responseReady');
+            if (endSession) {
+                this.emit(':tell');
+            } else {
+                this.emit(':responseReady');
+            }
+            
 
             trivia.setAttributes.call(this, {
                 "prompt": prompt,
@@ -278,26 +338,22 @@ var Questions = require('../content/questions'),
                 intentValue = trivia.getIntent.call(this, 'Number', 7),
                 numberOfQuestions = parseInt(ordinalToNumber(intentValue), 10);
 
-            Log.write("Setting up the game parameters.");
-
             if (Settings.gameLengthOptions.indexOf(numberOfQuestions) > -1) {
-                reprompt = Strings('launch.areYouReady');
                 prompt = Strings('global.thankYou').Concat(
                     Strings('global.punctuation.period'),
                     Strings('launch.iWillAsk').Format(numberOfQuestions.toString()),
-                    Strings('global.pause.short'),
-                    reprompt
+                    Strings('global.pause.short')
                 ).Clean();
 
                 trivia.setAttributes.call(this, {'numberOfQuestions': numberOfQuestions});
+                trivia.play.call(this, prompt);
             } else {
                 reprompt = Strings('launch.beforeWeCanBeginError').Format(
                     Settings.gameLengthOptions.JoinWith(', ', 'or ')
                 ).Clean();
                 prompt = reprompt;
+                trivia.sendResponse.call(this, prompt, reprompt);
             }
-
-            trivia.sendResponse.call(this, prompt, reprompt);
         },
         /**
          * Assigns JSON key/value pairs to the Alexa attributes.

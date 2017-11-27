@@ -4,6 +4,7 @@ module.exports = Alexa.CreateStateHandler(Settings.handlerStates.game, {
     'AnswerUnknownIntent': function () {Trivia.answer.call(this, true);},
     'ChangeNumberOfQuestionsIntent': Trivia.changeNumberOfQuestions,
     'AMAZON.CancelIntent': Trivia.cancel,
+    'AMAZON.HelpIntent' : Trivia.help,
     'AMAZON.NoIntent': Trivia.quit,
     'AMAZON.RepeatIntent': Trivia.repeat,
     'AMAZON.StartOverIntent': Trivia.startOver,

@@ -1,4 +1,12 @@
 (function(global){
+    global.Empty = function (_string, returnTheString, _default) {
+        if (!_string || _string.length === 0 || !_string.trim()) {
+            return _default || false;
+        } else {
+            return returnTheString ? _string : true;
+        }
+    };
+
     global.getUniqueRandomNumber = (min, max, tracker) => {
         let rand = Math.floor((Math.random() * (max - min + 1)) + min);
         if (tracker) {
@@ -39,8 +47,25 @@
         return this >= min && this <= max;
     };
 
+    Object.prototype.getKeys = function(_key, _delimiter = ' ') {
+        var key,
+            value,
+            returnArray = [];
+
+        for(key in this) {
+            if (key === _key) {
+                returnArray.push(this[key]);
+            } else if (typeof(this[key]) === 'object') {
+                value = this[key].getKeys(_key);
+                returnArray.push(value);
+            }
+        }
+
+        return returnArray.join(_delimiter);
+    }
+
     String.prototype.Clean = function() {
-        return this.replace(/\s{2,}/g, ' ');
+        return this.replace(/\s{2,}/g, ' ').trim();
     }
 
     String.prototype.Concat = function (separator) {

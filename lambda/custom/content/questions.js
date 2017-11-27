@@ -34,7 +34,7 @@ module.exports = [
             "A solid gold goose"
         ],
         "answer"   : 2,
-        "answerCopy"  : 'George says, "Wish I had a million dollars.", then he presses down on the cigar lighter and it lights. <prosody pitch="high" volume="x-loud">Hot dog!</prosody>',
+        "answerCopy"  : 'George says, "Wish I had a million dollars.", then he presses down on the cigar lighter and it lights. <prosody pitch="high" volume="x-loud" rate="70%"><phoneme alphabet="ipa" ph="`hˈɑt dˌɑg">Hot dog</phoneme></prosody>!',
         "crux"     : 2
     },
     {

@@ -10,9 +10,9 @@
             "Alexa tell It's A Wonderful Life Trivia I want to play"
           ],
           "name": "It's A Wonderful Life Trivia Development",
-          "smallIconUri": "",
+          "smallIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.6a834ad5-9c03-4461-9582-f079a7cd139b/images/eyJkIjoiWGtpRExmMEV2dVVyV2hYd0RxKzVPbUZ1NkdzMzkrbWxQQ1d0SXNRbTVmaTNkQ3Q5SEZJbnNtYTdJL3hESUVvZ205NUZWclRVQ1VlRkNjOWNOK0xJWWxJd2dlR1IwNURUSnpVL25KSzNLbHJCc1hvaDZzN1Y4bE00dU9BSWxXQlAiLCJpdiI6InNVcGNISXNSNUFxSjhTREFnZmlDSEE9PSIsInYiOjF9",
           "description": "This skill will test your knowledge of the Christmas classic It's A Wonderful Life.",
-          "largeIconUri": ""
+          "largeIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.6a834ad5-9c03-4461-9582-f079a7cd139b/images/eyJkIjoiWW5YYjFWS1hQWVkwSGZMYUFveVAwTVBzUU5tWTlKOUo2SkpCTmV6RHdxdWtrQVRUSG12UTQ3d1loMmRQOXYyNWFkTStBcU4xT2VCQlFGU0luNHVOdnpwT2hvaGVyR2o1Yy9nSkcvZVRyQ3ppQjAyeDNQeEw4VG1HSlI0N1R0SmNERlY2U0J4azhZYktsbFZnTUlIbVZBPT0iLCJpdiI6Imo0dm5NTFFZa0YxRFBNU3pkbU1Hb0E9PSIsInYiOjF9"
         }
       },
       "isAvailableWorldwide": false,

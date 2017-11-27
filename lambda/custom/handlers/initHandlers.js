@@ -8,5 +8,9 @@ module.exports = {
         this.handler.state = Settings.handlerStates.setup;
         this.emitWithState('initializeGame', true, false);
     },
+    'LaunchWithNumberOfQuestionsIntent': function() {
+        this.handler.state = Settings.handlerStates.setup;
+        this.emitWithState('initializeGame', true, false, true);
+    },
     'Unhandled': Trivia.unhandled
 };
