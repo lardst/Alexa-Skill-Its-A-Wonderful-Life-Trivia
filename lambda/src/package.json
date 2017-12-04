@@ -1,0 +1,12 @@
+{
+  "name": "skill-trivia-game",
+  "version": "1.0.0",
+  "description": "This is a trivia game engine.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.0",
+    "rocket-numbers": "^1.0.0"
+  }
+}

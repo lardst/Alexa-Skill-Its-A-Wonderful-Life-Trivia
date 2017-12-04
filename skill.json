@@ -5,27 +5,25 @@
         "en-US": {
           "summary": "It's A Wonderful Life movie trivia.",
           "examplePhrases": [
-            "Alexa open It's A Wonderful Life Trivia dev",
+            "Alexa open It's A Wonderful Life Trivia",
             "Alexa tell It's A Wonderful Life Trivia to start a game",
             "Alexa tell It's A Wonderful Life Trivia I want to play"
           ],
-          "name": "It's A Wonderful Life Trivia Development",
-          "smallIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.6a834ad5-9c03-4461-9582-f079a7cd139b/images/eyJkIjoiWGtpRExmMEV2dVVyV2hYd0RxKzVPbUZ1NkdzMzkrbWxQQ1d0SXNRbTVmaTNkQ3Q5SEZJbnNtYTdJL3hESUVvZ205NUZWclRVQ1VlRkNjOWNOK0xJWWxJd2dlR1IwNURUSnpVL25KSzNLbHJCc1hvaDZzN1Y4bE00dU9BSWxXQlAiLCJpdiI6InNVcGNISXNSNUFxSjhTREFnZmlDSEE9PSIsInYiOjF9",
+          "name": "It's A Wonderful Life movie trivia.",
+          "smallIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.27bf7880-c629-4b33-9a91-02bb24ad4f62/images/eyJkIjoianByK2paMDBBVUFCZkZTNFRGajFPVGV2K2RYQzJYa3VkVlBKdnQwYVg1bUk4b2NHc3U0bEdJQnIvcXlQcFhyTUR4cVdnYSszVFNDclN5N0tPdFJxQndXM1E2VmFlUUVBN2xHZzhNeHozOGNOZllVRjNCbWY3SUxOYjNXOVhPUEYiLCJpdiI6IlRKamhqdkVTamppSUZFNHRVUWhpVWc9PSIsInYiOjF9",
           "description": "This skill will test your knowledge of the Christmas classic It's A Wonderful Life.",
-          "largeIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.6a834ad5-9c03-4461-9582-f079a7cd139b/images/eyJkIjoiWW5YYjFWS1hQWVkwSGZMYUFveVAwTVBzUU5tWTlKOUo2SkpCTmV6RHdxdWtrQVRUSG12UTQ3d1loMmRQOXYyNWFkTStBcU4xT2VCQlFGU0luNHVOdnpwT2hvaGVyR2o1Yy9nSkcvZVRyQ3ppQjAyeDNQeEw4VG1HSlI0N1R0SmNERlY2U0J4azhZYktsbFZnTUlIbVZBPT0iLCJpdiI6Imo0dm5NTFFZa0YxRFBNU3pkbU1Hb0E9PSIsInYiOjF9"
+          "largeIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.27bf7880-c629-4b33-9a91-02bb24ad4f62/images/eyJkIjoiRzdkMEp3YXY0UzhETW5sdjZpdWh0azVKeW1OTm45S0FJVitCdENlZERIbUMrOHBwb2FOQ1FyRlNZLzhyZDRRd1E2YU9NZXo1WmdNaXF5ZVAwRk9veFlmVisyeS9OTUEzWnBTZDhuZDE0S2hDSTQxbXZPYTNHcHl1dHpTQnVYM1lyV2w2VGRGVG9jWXlkMStLSjRUWWpRPT0iLCJpdiI6IlJJN3VFVE44aktMUHBSM3QyZFNUZlE9PSIsInYiOjF9"
         }
       },
-      "isAvailableWorldwide": false,
+      "isAvailableWorldwide": true,
       "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
-      "distributionCountries": [
-        "US"
-      ]
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
     },
     "apis": {
       "custom": {
         "endpoint": {
-          "sourceDir": "lambda/custom"
+          "sourceDir": "lambda/src"
         }
       }
     },

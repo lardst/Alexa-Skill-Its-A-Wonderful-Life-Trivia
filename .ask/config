@@ -1,0 +1,19 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.27bf7880-c629-4b33-9a91-02bb24ad4f62",
+      "was_cloned": false,
+      "merge": {
+        "skillManifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-It_s_A_Wonderful_Life_Trivia-default"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -70,9 +70,13 @@
 					}]
 				},
 				{
-					"name": "AnswerIntent",
+					"name": "NumberIntent",
 					"samples": [
 						"i like the {Number} one",
+						"i would like {Number}",
+						"i would like {Number} please",
+						"i would like {Number} questions",
+						"i would like {Number} questions please",
 						"i'll say the {Number} one",
 						"is it {Number}",
 						"my Number is {Number}",
@@ -83,23 +87,9 @@
 						"what is the {Number} one",
 						"what is {Number}",
 						"{Number}",
-						"{Number} is my Number"
-					],
-					"slots": [{
-						"name": "Number",
-						"type": "CardinalAndOrdinalNumbers"
-					}]
-				},
-				{
-					"name": "NumberOfQuestionsIntent",
-					"samples": [
-						"i would like {Number}",
-						"i would like {Number} questions",
-						"{Number}",
-						"{Number} questions",
-						"i would like {Number} please",
-						"i would like {Number} questions please",
+						"{Number} is my Number",
 						"{Number} please",
+						"{Number} questions",
 						"{Number} questions please"
 					],
 					"slots": [{
@@ -132,7 +122,7 @@
 					"slots": []
 				}
 			],
-			"invocationName": "it's a wonderful life trivia dev",
+			"invocationName": "it's a wonderful life trivia",
 			"types": [{
 				"name": "CardinalAndOrdinalNumbers",
 				"values": [{
