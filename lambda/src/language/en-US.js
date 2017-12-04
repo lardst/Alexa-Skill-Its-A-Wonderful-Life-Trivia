@@ -76,6 +76,7 @@ var _strings = {
             ask: {
                 stop: "Are you sure that you want to quit the game?",
             },
+            stop: "Okay, sorry to see you go. Until next time then. Goodbye!"
         }
     },
     map = {
@@ -110,6 +111,8 @@ var _strings = {
 
         short_pause: `${_strings.shared.pause.short}`,
         okay: `${_strings.shared.okay}`,
+
+        stop: `${_strings.shared.stop}`,
     };
 
 module.exports = map;

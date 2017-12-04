@@ -150,8 +150,8 @@ class Trivia {
         this.send(_prompt, _reprompt);
     }
 
-    endSession () {
-        
+    endSession (_alexa) {
+        _alexa.emit(':tell', Strings('stop'));
     }
 
     help (_alexa) {
