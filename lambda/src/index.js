@@ -25,10 +25,15 @@ var Alexa = global.Alexa = require("alexa-sdk"),
 /*********************************************************************************************************************/
 
 exports.handler = function(event, context) {
-    var alexa = Alexa.handler(event, context);
-    alexa.registerHandlers(InitHandlers, SetupHandlers, GameHandlers);
-    alexa.appId = Settings.appID;
-    alexa.execute();
+    var alexa;
+    if (Settings.appID && event.session.application.applicationId === Settings.appID) {
+        alexa = Alexa.handler(event, context);
+        alexa.registerHandlers(InitHandlers, SetupHandlers, GameHandlers);
+        alexa.appId = Settings.appID;
+        alexa.execute();
+    } else {
+        throw new Exception('invalidAppID');
+    }
 };
 
 /*********************************************************************************************************************/

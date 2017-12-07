@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is a trivia game engine.",
   "scripts": {
-    "test": "mocha test/ -R spec -s 300 -t 3000"
+      "test": "mocha test/ -R spec -s 300 -t 3000"
   },
   "dependencies": {
       "grunt": "0.4.5",
