@@ -42,34 +42,6 @@
 					"samples": []
 				},
 				{
-					"name": "LaunchWithNumberOfQuestionsIntent",
-					"samples": [
-						"with {Number} questions",
-						"game with {Number} questions",
-						"and play with {Number} questions",
-						"and ask me {Number} questions",
-						"set the number of questions to {Number}",
-						"ask me {Number} questions"
-					],
-					"slots": [{
-						"name": "Number",
-						"type": "CardinalAndOrdinalNumbers"
-					}]
-				},
-				{
-					"name": "ChangeNumberOfQuestionsIntent",
-					"samples": [
-						"change the number of questions",
-						"i want to change the number of questions",
-						"change the number of questions to {Number}",
-						"i want to change the number of questions to {Number}"
-					],
-					"slots": [{
-						"name": "Number",
-						"type": "CardinalAndOrdinalNumbers"
-					}]
-				},
-				{
 					"name": "NumberIntent",
 					"samples": [
 						"i like the {Number} one",

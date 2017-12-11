@@ -225,9 +225,9 @@ module.exports = [
             "Three dollars",
             "Four dollars"
         ],
-        "answer": 2,
+        "answer": "2",
         "answerCopy": "A toast, to Papa Dollar and to Mama Dollar, and if you want the old Building and Loan to stay in business, you better have a family real quick.",
-        "crux": 2
+        "crux": "2"
     },
     {
         "comment": "91",
@@ -238,9 +238,48 @@ module.exports = [
             "Mr. Potter",
             "Mr. Wainwright"
         ],
-        "answer": 3,
+        "answer": "3",
         "answerCopy": "As Mr. Potter puts it: You know just as well as I do that I run practically everything in this town, but the Bailey Building and Loan..",
-        "crux": 2
+        "crux": "2"
+    },
+    {
+        "comment": "92",
+        "question": "Mr. Potter offers George a job, how much does Mr. Potter say that he will earn annually?",
+        "choices": [
+            "Ten thousand",
+            "Twenty thousand",
+            "Thirty thousand",
+            "Forty thousand"
+        ],
+        "answer": "2",
+        "answerCopy": "A flabbergasted George can barely contain himself.<break time=\"700ms\"/> Twenty thou... twenty thousand dollars a year?",
+        "crux": "3"
+    },
+    {
+        "comment": "98",
+        "question": "During the war, how did Sam Wainwright make his fortune?",
+        "choices": [
+            "In rubber for military tires",
+            "In metal for ship hulls",
+            "In plastic hoods for planes",
+            "In wood to keep the home fires burning"
+        ],
+        "answer": "3",
+        "answerCopy": "As Joseph explains to Clarence. Sam Wainwright made a fortune in plastic hoods for planes.",
+        "crux": "3"
+    },
+    {
+        "comment": "105",
+        "question": "Harry is returning home to Bedford Falls for a big celebration in his honor. What is everyone celebrating?",
+        "choices": [
+            "Harry won a pie eating contest",
+            "Harry was promoted to General",
+            "Harry was crowned king of the winter carnival",
+            "Harry received the congressional medal of honor"
+        ],
+        "answer": "4",
+        "answerCopy": "As an excited and proud George tells it. We're all excited around here. My brother just got the Congressional Medal of Honor. The President just decorated him.",
+        "crux": "2"
     },
     {
         "comment": "109",
@@ -254,6 +293,32 @@ module.exports = [
         "answer": "3",
         "answerCopy": "Uncle Billy pushes a folded up newspaper into Mr. Potter's hands that just happen to have the eight-thousand dollars in it, later Billy mutters to himself, I should have my head examined. Eight thousand dollars. It's got to be somewhere.",
         "crux": "2"
+    },
+    {
+        "comment": "114",
+        "question": "George and Mary's daughter Janie is practicing the piano for the party later that night. Which song is she playing?",
+        "choices": [
+            "Jingle bells",
+            "O' holy night",
+            "Hark, the Herald Angels Sing",
+            "Little saint nick"
+        ],
+        "answer": "3",
+        "answerCopy": "A frustrated George asks Mary. Must she keep playing that? Janie is quick to reply. I have to practice for the party tonight, Daddy.",
+        "crux": "2"
+    },
+    {
+        "comment": "130",
+        "question": "A drunk George Bailey crashes his car into an old tree, the owner comes out upset. Who does he say planted that tree?",
+        "choices": [
+            "His father",
+            "His grandfather",
+            "His great-grandfather",
+            "His great-great-grandfather"
+        ],
+        "answer": "3",
+        "answerCopy": "The upset owner yells at George. Now look what you did. My great-grandfather planted this tree.",
+        "crux": "3"
     },
     {
         "comment": "133",
